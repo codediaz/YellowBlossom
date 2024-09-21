@@ -13,12 +13,16 @@
 }
 
 body {
-  font-family: 'Dancing Script', cursive;  
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   min-height: 100vh;
-   background: linear-gradient(180deg, #1e3a56, #d4a5ff); /* Mezcla de azules y morados suaves */
+  background: linear-gradient(180deg, #e0f7fa, #ffeaa7); /* Tonos suaves de azul y amarillo */
   overflow: hidden;
   perspective: 1000px;
 }
@@ -31,6 +35,8 @@ body {
   width: 100%;
   height: 100%;
   filter: blur(0.1vmin);
+  background: radial-gradient(circle at 50% 0, #001f3f, transparent),
+  linear-gradient(180deg, #001f3f 0%, #0a71d6 100%);
   background-image: radial-gradient(
       ellipse at top,
       transparent 0%,
@@ -234,8 +240,7 @@ body {
   height: 4vmin;
   border-radius: 50%;
   background-color: #fff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), /* Luz más pronunciada en el centro */
-              inset 0 0 3px rgba(0, 0, 0, 0.1); /* Añadimos sombra interna */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7), inset 0 0 2px rgba(0, 0, 0, 0.1);
 
 }
 .flower__white-circle::after {
@@ -1559,6 +1564,14 @@ body {
   }
 }
 .container * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Asegura que no haya desplazamientos extraños */
+    background: linear-gradient(180deg, #e0f7fa, #ffeaa7); /* Ajusta el fondo si es necesario */
+
   -webkit-animation-play-state: paused !important;
   animation-play-state: paused !important;
 } /*# sourceMappingURL=main.css.map */
@@ -1569,22 +1582,26 @@ body {
   height: 100%;
   width: 100%;
   pointer-events: none;
+  fill: #ff6f61;
 }
 
 .bubble {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición más suave al hacer hover */
   position: absolute;
   z-index: 200;
   border-radius: 50%;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); /* Resplandor alrededor */
+
 }
 
 .bubble:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Resaltar el borde de las burbujas */
 }
   
 .bubble:nth-child(1) {
-  top: 8%;
-  left: 60%;
+  top: 10%;
+  left: 80%;
 
   height: 11vmin;
   width: 11vmin;
@@ -1597,8 +1614,8 @@ body {
   transform-origin: center bottom;
 }
 .bubble:nth-child(2) {
-  top: 83%;
-  left: 14%;
+  top: 50%;
+  left: 20%;
   height: 20vmin;
   width: 20vmin;
   -webkit-animation: love-burst 3s infinite 0.15s;
@@ -1610,8 +1627,8 @@ body {
   transform-origin: center bottom;
 }
 .bubble:nth-child(3) {
-  top: 25%;
-  left: 49%;
+  top: 70%;
+  left: 70%;
   height: 4vmin;
   width: 4vmin;
   -webkit-animation: love-burst 3s infinite 0.3s;
@@ -1862,8 +1879,10 @@ body {
   }
 }
 .heart {
-  fill: #f5a9b8; /* Rosado pastel para los corazones */
-  transition: fill 0.5s ease-in-out;
+  fill: #ff6f61; /* Rosado pastel para los corazones */
+  transition: all 0.3s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); /* Resplandor alrededor */
+
 }
 
 .heart:hover {
@@ -1990,6 +2009,13 @@ body {
   transform: scale(0.5) rotate(46deg);
 }
 
+footer {
+    width: 100%;
+    background-color: #ffeaa7;
+    text-align: center;
+    padding: 10px 0;
+}
+
 @-webkit-keyframes love {
   50% {
     fill: rgb(253, 66, 19);
@@ -2002,4 +2028,14 @@ body {
     fill: rgb(253, 93, 19);
     opacity: 1;
   }
+}
+
+@media (max-width: 480px) {
+    .flower, .bubble, .heart {
+        transform: scale(0.8); /* Ajustar el tamaño de las flores y corazones para pantallas pequeñas */
+    }
+
+    .title {
+        font-size: 1.5rem; /* Ajustar el tamaño de la fuente */
+    }
 }
